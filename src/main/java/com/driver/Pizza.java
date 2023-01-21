@@ -60,7 +60,7 @@ public class Pizza {
             if(addCheese>=1 && DP==false) bill+="Extra Cheese Added: 80 \n";
             if(addTopping>=1 && DP==false) bill+="Extra Toppings Added: 70 \n";
             if(takeAwayCount>=1) bill+="Paperbag Added: 20 \n";
-            bill+="Total Price: "+price +"\n";
+            bill+="Total Price: "+price ;
         }
         else{
             bill = "Base Price Of The Pizza: 400 \n";
