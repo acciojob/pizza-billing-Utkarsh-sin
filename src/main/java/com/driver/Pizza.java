@@ -5,16 +5,28 @@ public class Pizza {
     private int price;
     private Boolean isVeg;
     private String bill;
+    private int extraTopping;
+    private boolean isExtraCheese;
+    private boolean isExtraTopping;
+    private boolean isTakeAway;
 
-    private int takeAwayCount=0;
-    private int addTopping =0;
-    private int addCheese =0;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         // your code goes here
-        if(isVeg==true) price=300;
-        else price =400;
+        if(isVeg==true) {
+            this.price=300;
+            this.extraTopping=70;
+        }
+        else {
+            this.price =400;
+            this.extraTopping=120;
+        }
+        this.isExtraCheese=false;
+        this.isExtraTopping=false;
+        this.isTakeAway=false;
+        this.bill="";
+        this.bill+="Base Price Of The Pizza: "+ this.price+"\n";
     }
 
     public int getPrice(){
@@ -23,63 +35,34 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
-        if(this.getClass().equals(DeluxePizza.class)==false) {
-            addCheese++;
-            if (addCheese == 1)
-                price = price + 80;
+        if(!isExtraCheese){
+            this.price = price+80;
+            isExtraCheese=true;
         }
     }
 
     public void addExtraToppings(){
         // your code goes here
-        if(this.getClass().equals(DeluxePizza.class)==false) {
-            addTopping++;
-            if (isVeg == true && addTopping == 1) {
-                price = price + 70;
-            } else if (addTopping == 1) {
-                price = price + 120;
-            }
+        if(!isExtraTopping){
+            this.price = price+extraTopping;
+            isExtraTopping=true;
         }
     }
 
     public void addTakeaway(){
         // your code goes here
-        takeAwayCount++;
-        if(takeAwayCount==1)
-            price=price+20;
+        if(!isTakeAway){
+            this.price = price+20;
+            isTakeAway=true;
+        }
     }
 
     public String getBill(){
         // your code goes here
-        boolean DP=false;
-        if(this.getClass().equals(DeluxePizza.class)){
-            DP=true;
-        }
-        if(isVeg) {
-            bill = "Base Price Of The Pizza: 300 \n";
-            if(addCheese>=1 && DP==false) bill+="Extra Cheese Added: 80 \n";
-            if(addTopping>=1 && DP==false) bill+="Extra Toppings Added: 70 \n";
-            if(DP==true){
-                bill+="Extra Cheese Added: 80 \n";
-                bill+="Extra Toppings Added: 70 \n";
-                price=price+80+70;
-            }
-            if(takeAwayCount>=1) bill+="Paperbag Added: 20 \n";
-            bill+="Total Price: "+price +"\n" ;
-
-        }
-        else{
-            bill = "Base Price Of The Pizza: 400 \n";
-            if(addCheese>=1 && DP==false) bill+="Extra Cheese Added: 80 \n";
-            if(addTopping>=1 && DP==false) bill+="Extra Toppings Added: 120 \n";
-            if(takeAwayCount>=1) bill+="Paperbag Added: 20 \n";
-            if(DP==true){
-                bill+="Extra Cheese Added: 80 \n";
-                bill+="Extra Toppings Added: 120 \n";
-                price=price+80+120;
-            }
-            bill+="Total Price: "+price +"\n";
-        }
+            if(isExtraCheese) this.bill+="Extra Cheese Added: 80 \n";
+            if(isExtraTopping) this.bill+="Extra Toppings Added: "+extraTopping+"\n";
+            if(isTakeAway) this.bill+="Paperbag Added: 20 \n";
+            this.bill+="Total Price: "+this.price+"\n" ;
         return this.bill;
     }
 }
