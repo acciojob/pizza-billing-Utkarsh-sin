@@ -59,9 +59,9 @@ public class Pizza {
 
     public String getBill(){
         // your code goes here
-            if(isExtraCheese) this.bill+="Extra Cheese Added: 80 \n";
+            if(isExtraCheese) this.bill+="Extra Cheese Added: 80\n";
             if(isExtraTopping) this.bill+="Extra Toppings Added: "+extraTopping+"\n";
-            if(isTakeAway) this.bill+="Paperbag Added: 20 \n";
+            if(isTakeAway) this.bill+="Paperbag Added: 20\n";
             this.bill+="Total Price: "+this.price+"\n" ;
         return this.bill;
     }
