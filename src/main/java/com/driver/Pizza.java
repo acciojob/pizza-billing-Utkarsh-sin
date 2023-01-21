@@ -59,14 +59,25 @@ public class Pizza {
             bill = "Base Price Of The Pizza: 300 \n";
             if(addCheese>=1 && DP==false) bill+="Extra Cheese Added: 80 \n";
             if(addTopping>=1 && DP==false) bill+="Extra Toppings Added: 70 \n";
+            if(DP==true){
+                bill+="Extra Cheese Added: 80 \n";
+                bill+="Extra Toppings Added: 70 \n";
+                price=price+80+70;
+            }
             if(takeAwayCount>=1) bill+="Paperbag Added: 20 \n";
             bill+="Total Price: "+price +"\n" ;
+
         }
         else{
             bill = "Base Price Of The Pizza: 400 \n";
             if(addCheese>=1 && DP==false) bill+="Extra Cheese Added: 80 \n";
             if(addTopping>=1 && DP==false) bill+="Extra Toppings Added: 120 \n";
             if(takeAwayCount>=1) bill+="Paperbag Added: 20 \n";
+            if(DP==true){
+                bill+="Extra Cheese Added: 80 \n";
+                bill+="Extra Toppings Added: 120 \n";
+                price=price+80+120;
+            }
             bill+="Total Price: "+price +"\n";
         }
         return this.bill;
